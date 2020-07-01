@@ -1,0 +1,21 @@
+  <div class="confirmer">
+      <img src="{{message.image}}" class="w-50 text-center" alt="Photo message"> <br>
+  </div>
+  <br>
+  <div class="text-center">
+    <h4>{{message.titre}}</h4>
+    <h5> {{message.description}} </h5>
+    <p><small class="text-muted">Ajouté le {{message.dateAjout | date : 'dd/MM/yy'}} à {{message.dateAjout | date : 'hh:mm'}}</small></p>
+  </div>
+
+  <div *ngIf="confirme" class="confirmer">
+    <h4 >Cliquez sur ce bouton pour confirmer</h4>
+    <button class="btn" (click)="deleteMessage(message.id)">Confirmer</button>
+  </div>
+  <br>
+
+
+  <!-- Bouton modifier -->
+  <button class="btn btn-info w-50" [routerLink]="['/edit-message', message.id]">Modifier</button>
+  <!-- Bouton supprimer -->
+  <button class="btn btn-danger w-50" (click)="confirmer()">Supprimer</button>

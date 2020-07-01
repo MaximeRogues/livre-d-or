@@ -1,0 +1,35 @@
+<br>
+<div class="bg-light">
+  <h2> Ajouter un message : </h2>
+
+  <!-- formulaire Angular, fonction à lancer au submit -->
+  <form #messageForm="ngForm" (ngSubmit)="editMessage()">
+
+    <!-- titre -->
+    <label for="titre">Titre du message : </label>
+    <input type="text" class="form-control" name="titre" id="titre" required [(ngModel)]="message.titre" #titre="ngModel">
+    <br>
+    <div [hidden]="titre.valid" class="alert alert-danger">
+      Le titre du message est requis
+    </div>
+
+
+    <!-- description -->
+    <label for="description">Description du message : </label>
+    <input type="text" class="form-control" name="description" id="description" required [(ngModel)]="message.description"
+      #description="ngModel"> <br>
+    <div [hidden]="description.valid" class="alert alert-danger">
+      Le description du message est requis
+    </div>
+
+    <!-- image -->
+    <label for="image">Url de l'image du message : </label>
+    <input type="string" class="form-control" name="image" id="image" required [(ngModel)]="message.image"
+      #image="ngModel"> <br>
+    <div [hidden]="image.valid" class="alert alert-danger">
+      L'image du message est requis
+    </div>
+
+    <input [disabled]='!messageForm.valid' id="submitmessage" type="submit" value="Envoyer">
+  </form>
+</div>
